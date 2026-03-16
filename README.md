@@ -10,7 +10,7 @@
 
 <br/>
 
-[![Version](https://img.shields.io/badge/Version-2.0.1-FF6B35?style=for-the-badge&labelColor=1a1a2e)](https://github.com/Sumit6258/NutriCalc-India)
+[![Version](https://img.shields.io/badge/Version-2.0.4-FF6B35?style=for-the-badge&labelColor=1a1a2e)](https://github.com/Sumit6258/NutriCalc-India)
 [![Last Commit](https://img.shields.io/github/last-commit/Sumit6258/NutriCalc-India?style=for-the-badge&color=FF6B35&labelColor=1a1a2e&logo=git)](https://github.com/Sumit6258/NutriCalc-India/commits)
 [![License](https://img.shields.io/badge/License-Private-red?style=for-the-badge&labelColor=1a1a2e)](https://github.com/Sumit6258/NutriCalc-India)
 
