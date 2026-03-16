@@ -10,7 +10,7 @@
 
 <br/>
 
-[![Version](https://img.shields.io/badge/Version-2.0.0-FF6B35?style=for-the-badge&labelColor=1a1a2e)](https://github.com/Sumit6258/NutriCalc-India)
+[![Version](https://img.shields.io/badge/Version-2.0.1-FF6B35?style=for-the-badge&labelColor=1a1a2e)](https://github.com/Sumit6258/NutriCalc-India)
 [![Last Commit](https://img.shields.io/github/last-commit/Sumit6258/NutriCalc-India?style=for-the-badge&color=FF6B35&labelColor=1a1a2e&logo=git)](https://github.com/Sumit6258/NutriCalc-India/commits)
 [![License](https://img.shields.io/badge/License-Private-red?style=for-the-badge&labelColor=1a1a2e)](https://github.com/Sumit6258/NutriCalc-India)
 
@@ -47,6 +47,25 @@ The result? **Millions of Indian users guessing their calorie intake** with tool
 | Built for the West | **Built for India 🇮🇳** |
 
 </div>
+
+<br/>
+
+---
+
+## 🤯 Did You Know?
+
+> 🍚 &nbsp; A single plate of Chole Bhature can pack **over 800 calories** , roughly 40% of an average adult's daily intake. Most people guess it's around 400.
+
+> 🫓 &nbsp; One homemade Roti has about **70-80 calories**. But restaurant Butter Roti? Closer to **150**. The difference adds up fast.
+
+> 🥘 &nbsp; Dal is one of the most protein-dense everyday Indian foods with **~9g of protein per cup** , yet most fitness apps don't even list it properly.
+
+> 🍳 &nbsp; Poha is only **~250 calories** per serving and has more iron than most breakfast cereals. Your morning plate is actually underrated.
+
+> 🧆 &nbsp; Two Idlis with sambar clock in at just **~150 calories**. South Indian breakfasts are genuinely some of the most balanced meals in the world.
+
+**Most people eating Indian food daily have no idea what they're actually consuming.**
+NutriCalc India fixes that, instantly, for free.
 
 <br/>
 
@@ -121,26 +140,6 @@ The result? **Millions of Indian users guessing their calorie intake** with tool
 
 ---
 
-## 🔭 Roadmap
-
-<br/>
-
-| Status | Feature |
-|:---:|---|
-| ✅ | Core calorie calculator |
-| ✅ | Indian food database |
-| ✅ | Mobile-responsive UI |
-| 🔄 | Expanded food database |
-| 🔄 | Macronutrient breakdown (Carbs / Protein / Fats) |
-| 🔄 | Meal tracking across the day |
-| 🔄 | Personalized diet recommendations |
-| 🔄 | Weekly nutrition reports |
-| 🔄 | Refined UI/UX overhaul |
-
-<br/>
-
----
-
 ## 📊 Project at a Glance
 
 <br/>
@@ -153,7 +152,7 @@ The result? **Millions of Indian users guessing their calorie intake** with tool
 | 🌐 **Hosting** | GitHub Pages |
 | 🎯 **Target Users** | Indian Diet Users |
 | 💻 **Technologies** | HTML · CSS · JavaScript |
-| 🔖 **Version** | 2.0.0 |
+| 🔖 **Version** | 2.0.1 |
 | 🔒 **License** | Private, All Rights Reserved |
 
 </div>
@@ -184,8 +183,9 @@ The result? **Millions of Indian users guessing their calorie intake** with tool
 
 ### Made with ❤️ for India
 
-**NutriCalc India** was built with passion to make nutrition awareness simple,  
-accessible, and actually relevant for the way we eat.
+**NutriCalc India** was built with one simple belief , that every Indian deserves to understand what they're eating, in their own context, without downloading an app, signing up, or converting grams of "generic curry" into something vaguely useful.
+
+It takes **under 10 seconds** to get your first result. No account. No paywall. No nonsense.
 
 <br/>
 
@@ -193,7 +193,7 @@ accessible, and actually relevant for the way we eat.
 
 <br/>
 
-[![🌐 Live Website](https://img.shields.io/badge/🌐%20Live%20Website-Visit%20Now-FF6B35?style=for-the-badge&labelColor=1a1a2e)](https://sumit6258.github.io/NutriCalc-India/)
+[![🌐 Open NutriCalc India](https://img.shields.io/badge/Open%20NutriCalc%20India-Try%20it%20free-FF6B35?style=for-the-badge&labelColor=1a1a2e)](https://sumit6258.github.io/NutriCalc-India/)
 
 <br/>
 
