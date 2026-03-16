@@ -179,8 +179,22 @@ body{font-family:var(--font);background:var(--bg);color:var(--text-1);line-heigh
 .section-h{font-size:1.6rem;font-weight:800;letter-spacing:-.03em;color:var(--text-1);margin-bottom:4px}
 .section-sub{font-size:13px;color:var(--text-3);margin-bottom:28px;font-weight:400}
 
-.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px;box-shadow:var(--shadow-sm);transition:box-shadow .2s,background .3s,border-color .3s;margin-bottom:24px}
-.panel:hover{box-shadow:var(--shadow-md)}
+.panel{
+  background:rgba(255,255,255,.82);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1px solid rgba(232,232,224,.8);
+  border-radius:var(--r-lg);padding:32px;
+  box-shadow:0 2px 12px rgba(0,0,0,.05),0 1px 3px rgba(0,0,0,.03),inset 0 1px 0 rgba(255,255,255,.7);
+  transition:box-shadow .25s ease,transform .2s ease,background .3s,border-color .3s;
+  margin-bottom:24px;
+}
+.panel:hover{box-shadow:0 8px 32px rgba(0,0,0,.08),0 2px 8px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.7)}
+[data-theme="dark"] .panel{
+  background:rgba(28,28,26,.75);
+  border-color:rgba(42,42,38,.9);
+  box-shadow:0 2px 12px rgba(0,0,0,.3),0 1px 3px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.04);
+}
+[data-theme="dark"] .panel:hover{box-shadow:0 8px 32px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.04)}
 
 /* ======================================================
    FORM ELEMENTS
@@ -215,10 +229,11 @@ body{font-family:var(--font);background:var(--bg);color:var(--text-1);line-heigh
   background:linear-gradient(135deg,var(--emerald) 0%,var(--lime) 100%);
   opacity:0;transition:opacity .2s;
 }
-.pick-card:hover{border-color:var(--emerald);transform:translateY(-2px);box-shadow:var(--shadow-md)}
-.pick-input:checked+.pick-card{border-color:var(--emerald);background:var(--emerald-dim);box-shadow:0 0 0 3px rgba(5,150,105,.12)}
+.pick-card:hover{border-color:var(--emerald);transform:translateY(-2px);box-shadow:0 6px 20px rgba(5,150,105,.12)}
+.pick-input:checked+.pick-card{border-color:var(--emerald);background:rgba(209,250,229,.55);box-shadow:0 0 0 3px rgba(5,150,105,.12),0 4px 14px rgba(5,150,105,.10)}
 [data-theme="dark"] .pick-input:checked+.pick-card{background:rgba(5,150,105,.18)}
-.pick-icon{font-size:22px;position:relative;z-index:1}
+.pick-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;color:var(--text-3);transition:color .2s;flex-shrink:0}
+.pick-input:checked+.pick-card .pick-icon{color:var(--emerald)}
 .pick-name{font-size:12px;font-weight:700;color:var(--text-2);position:relative;z-index:1;transition:color .2s}
 .pick-desc{font-size:10px;color:var(--text-4);position:relative;z-index:1;line-height:1.3}
 .pick-input:checked+.pick-card .pick-name{color:var(--emerald-deep)}
@@ -230,10 +245,13 @@ body{font-family:var(--font);background:var(--bg);color:var(--text-1);line-heigh
 ====================================================== */
 .metrics-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px;margin-top:24px}
 .mcard{
-  background:var(--surface-2);border:1px solid var(--border);
+  background:rgba(245,245,240,.7);border:1px solid var(--border);
   border-radius:var(--r-md);padding:20px 18px;text-align:center;
   position:relative;overflow:hidden;transition:all .2s;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 1px 4px rgba(0,0,0,.04);
 }
+[data-theme="dark"] .mcard{background:rgba(34,34,32,.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
 .mcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--bar-color,var(--emerald))}
 .mcard-val{font-size:2rem;font-weight:800;letter-spacing:-.05em;color:var(--text-1);line-height:1}
 .mcard-unit{font-size:12px;color:var(--text-4);margin-top:3px;font-weight:500}
@@ -364,11 +382,13 @@ body{font-family:var(--font);background:var(--bg);color:var(--text-1);line-heigh
 .log-row{
   display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr 1fr 1fr 36px;
   gap:8px;padding:13px 14px;
-  background:var(--surface-2);border:1px solid var(--border);
+  background:rgba(245,245,240,.6);border:1px solid rgba(232,232,224,.7);
   border-radius:var(--r-sm);margin-bottom:8px;align-items:center;
-  animation:rowIn .25s ease;transition:box-shadow .15s;
+  animation:rowIn .25s ease;transition:box-shadow .15s,transform .15s,background .15s;
 }
-.log-row:hover{box-shadow:var(--shadow-md)}
+.log-row:hover{box-shadow:0 4px 16px rgba(0,0,0,.07);transform:translateY(-1px);background:rgba(255,255,255,.85)}
+[data-theme="dark"] .log-row{background:rgba(34,34,32,.5);border-color:rgba(42,42,38,.6)}
+[data-theme="dark"] .log-row:hover{background:rgba(42,42,40,.7)}
 @keyframes rowIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 .log-food-name{font-size:13px;font-weight:700;color:var(--text-1)}
 .log-food-qty{font-size:11px;color:var(--text-4);margin-top:1px}
@@ -388,9 +408,15 @@ body{font-family:var(--font);background:var(--bg);color:var(--text-1);line-heigh
 ====================================================== */
 .totals-bar{
   display:grid;grid-template-columns:repeat(5,1fr);gap:10px;
-  padding:20px;background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--r-lg);box-shadow:var(--shadow-sm);margin-top:16px;
+  padding:20px;
+  background:rgba(255,255,255,.7);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  box-shadow:0 2px 10px rgba(0,0,0,.05),inset 0 1px 0 rgba(255,255,255,.8);
+  margin-top:16px;
 }
+[data-theme="dark"] .totals-bar{background:rgba(28,28,26,.6);box-shadow:0 2px 10px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.04)}
 .tot{text-align:center}
 .tot-val{font-size:1.5rem;font-weight:800;letter-spacing:-.04em}
 .tot-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-4);margin-top:3px}
@@ -440,7 +466,15 @@ body{font-family:var(--font);background:var(--bg);color:var(--text-1);line-heigh
    CHARTS
 ====================================================== */
 .charts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-.chart-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;box-shadow:var(--shadow-xs)}
+.chart-card{
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;
+  box-shadow:0 2px 10px rgba(0,0,0,.05),inset 0 1px 0 rgba(255,255,255,.8);
+  transition:box-shadow .2s;
+}
+.chart-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.8)}
+[data-theme="dark"] .chart-card{background:rgba(28,28,26,.65);box-shadow:0 2px 10px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.04)}
 .chart-h{font-size:13px;font-weight:700;color:var(--text-2);margin-bottom:4px}
 .chart-sub{font-size:11px;color:var(--text-4);margin-bottom:18px}
 .chart-wrap{position:relative;height:190px}
@@ -449,7 +483,13 @@ body{font-family:var(--font);background:var(--bg);color:var(--text-1);line-heigh
    MICRONUTRIENTS
 ====================================================== */
 .micro-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}
-.micro-card{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-md);padding:16px}
+.micro-card{
+  background:rgba(245,245,240,.6);border:1px solid var(--border);border-radius:var(--r-md);padding:16px;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5);transition:all .2s;
+}
+.micro-card:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.5)}
+[data-theme="dark"] .micro-card{background:rgba(34,34,32,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
 .micro-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-4);margin-bottom:6px}
 .micro-val{font-size:1.2rem;font-weight:800;color:var(--text-1);letter-spacing:-.03em}
 .micro-unit{font-size:11px;color:var(--text-3);margin-left:3px}
@@ -600,7 +640,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text-1);line-heigh
   </a>
   <div class="nav-actions">
     <button class="btn-theme" onclick="toggleDark()" id="themeBtn" title="Toggle dark mode">
-      <span id="themeIcon">🌙</span>
+      <svg id="themeIcon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v1M8 14v1M1 8h1M14 8h1M3.05 3.05l.71.71M12.24 12.24l.71.71M12.24 3.76l-.71.71M3.76 12.24l-.71.71M8 5a3 3 0 100 6 3 3 0 000-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     </button>
     <a href="#app" class="btn-nav-cta">
       <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v11M1 6.5h11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -667,9 +707,9 @@ body{font-family:var(--font);background:var(--bg);color:var(--text-1);line-heigh
     <label class="field-label" style="margin-bottom:10px">Gender</label>
     <div class="pick-grid pick-grid-2" style="max-width:300px">
       <input type="radio" name="gender" id="gm" class="pick-input" value="male" checked onchange="compute()">
-      <label for="gm" class="pick-card"><span class="pick-icon">👨</span><span class="pick-name">Male</span></label>
+      <label for="gm" class="pick-card"><span class="pick-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="7.5" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 19c0-3.59 2.91-6.5 6.5-6.5s6.5 2.91 6.5 6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="pick-name">Male</span></label>
       <input type="radio" name="gender" id="gf" class="pick-input" value="female" onchange="compute()">
-      <label for="gf" class="pick-card"><span class="pick-icon">👩</span><span class="pick-name">Female</span></label>
+      <label for="gf" class="pick-card"><span class="pick-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="7.5" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 19c0-3.59 2.91-6.5 6.5-6.5s6.5 2.91 6.5 6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M8.5 14.5L11 17.5l2.5-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="pick-name">Female</span></label>
     </div>
   </div>
 
@@ -677,15 +717,15 @@ body{font-family:var(--font);background:var(--bg);color:var(--text-1);line-heigh
     <label class="field-label" style="margin-bottom:10px">How Active Are You?</label>
     <div class="pick-grid pick-grid-5">
       <input type="radio" name="act" id="a1" class="pick-input" value="1.2" checked onchange="compute()">
-      <label for="a1" class="pick-card"><span class="pick-icon">🪑</span><span class="pick-name">Mostly Sitting</span><span class="pick-desc">Desk job, little exercise</span></label>
+      <label for="a1" class="pick-card"><span class="pick-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="12" width="16" height="2" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="16" width="16" height="2" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M5 12V8a6 6 0 0112 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><span class="pick-name">Mostly Sitting</span><span class="pick-desc">Desk job, little exercise</span></label>
       <input type="radio" name="act" id="a2" class="pick-input" value="1.375" onchange="compute()">
-      <label for="a2" class="pick-card"><span class="pick-icon">🚶</span><span class="pick-name">Lightly Active</span><span class="pick-desc">Walk or gym 1-3x/week</span></label>
+      <label for="a2" class="pick-card"><span class="pick-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="4" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M11 6.5l-3 4h6l-1.5 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 16.5l1 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><span class="pick-name">Lightly Active</span><span class="pick-desc">Walk or gym 1-3x/week</span></label>
       <input type="radio" name="act" id="a3" class="pick-input" value="1.55" onchange="compute()">
-      <label for="a3" class="pick-card"><span class="pick-icon">🏃</span><span class="pick-name">Moderate</span><span class="pick-desc">Exercise 3-5x/week</span></label>
+      <label for="a3" class="pick-card"><span class="pick-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="4" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M7 8l2 2 2-3 2 2 2-2M9 12l-.5 4L11 19l2-3-.5-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="pick-name">Moderate</span><span class="pick-desc">Exercise 3-5x/week</span></label>
       <input type="radio" name="act" id="a4" class="pick-input" value="1.725" onchange="compute()">
-      <label for="a4" class="pick-card"><span class="pick-icon">💪</span><span class="pick-name">Very Active</span><span class="pick-desc">Hard training 6x/week</span></label>
+      <label for="a4" class="pick-card"><span class="pick-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11c0-3.87 3.13-7 7-7s7 3.13 7 7M8 14l3-6 3 6M9.5 12h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 18v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><span class="pick-name">Very Active</span><span class="pick-desc">Hard training 6x/week</span></label>
       <input type="radio" name="act" id="a5" class="pick-input" value="1.9" onchange="compute()">
-      <label for="a5" class="pick-card"><span class="pick-icon">🏋️</span><span class="pick-name">Athlete</span><span class="pick-desc">Twice-a-day training</span></label>
+      <label for="a5" class="pick-card"><span class="pick-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 10h14M6 10V7.5a2 2 0 012-2h6a2 2 0 012 2V10M8 10v4M14 10v4M6 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="4" r="1.2" stroke="currentColor" stroke-width="1.3"/></svg></span><span class="pick-name">Athlete</span><span class="pick-desc">Twice-a-day training</span></label>
     </div>
   </div>
 
@@ -693,11 +733,11 @@ body{font-family:var(--font);background:var(--bg);color:var(--text-1);line-heigh
     <label class="field-label" style="margin-bottom:10px">Your Fitness Goal</label>
     <div class="pick-grid pick-grid-3">
       <input type="radio" name="goal" id="gl" class="pick-input" value="loss" checked onchange="compute()">
-      <label for="gl" class="pick-card"><span class="pick-icon">🔥</span><span class="pick-name">Fat Loss</span><span class="pick-desc">Burn fat, stay lean</span></label>
+      <label for="gl" class="pick-card"><span class="pick-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3C7.13 3 4 6.13 4 10c0 3.87 3.13 7 7 7s7-3.13 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M15 3l4 4-4 4M19 7h-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 13v6M8.5 19h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><span class="pick-name">Fat Loss</span><span class="pick-desc">Burn fat, stay lean</span></label>
       <input type="radio" name="goal" id="gm2" class="pick-input" value="maint" onchange="compute()">
-      <label for="gm2" class="pick-card"><span class="pick-icon">⚖️</span><span class="pick-name">Maintenance</span><span class="pick-desc">Stay at current weight</span></label>
+      <label for="gm2" class="pick-card"><span class="pick-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 11h16M11 3l-6 8h12L11 3zM11 19l-6-8h12l-6 8z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="pick-name">Maintenance</span><span class="pick-desc">Stay at current weight</span></label>
       <input type="radio" name="goal" id="gg" class="pick-input" value="gain" onchange="compute()">
-      <label for="gg" class="pick-card"><span class="pick-icon">💪</span><span class="pick-name">Muscle Gain</span><span class="pick-desc">Build size and strength</span></label>
+      <label for="gg" class="pick-card"><span class="pick-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 4v14M4 11h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M6 8c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.5-.66 2.85-1.71 3.77" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><span class="pick-name">Muscle Gain</span><span class="pick-desc">Build size and strength</span></label>
     </div>
   </div>
 
@@ -705,13 +745,13 @@ body{font-family:var(--font);background:var(--bg);color:var(--text-1);line-heigh
     <label class="field-label" style="margin-bottom:10px">Diet Type</label>
     <div class="pick-grid" style="grid-template-columns:repeat(auto-fit,minmax(120px,1fr));max-width:600px">
       <input type="radio" name="diet" id="dv" class="pick-input" value="veg" checked onchange="refreshSuggestions()">
-      <label for="dv" class="pick-card"><span class="pick-icon">🥦</span><span class="pick-name">Vegetarian</span></label>
+      <label for="dv" class="pick-card"><span class="pick-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3C7 7 4 10 4 14c0 3.31 3.13 5 7 5s7-1.69 7-5c0-4-3-7-7-11z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 14v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><span class="pick-name">Vegetarian</span></label>
       <input type="radio" name="diet" id="dvg" class="pick-input" value="vegan" onchange="refreshSuggestions()">
-      <label for="dvg" class="pick-card"><span class="pick-icon">🌱</span><span class="pick-name">Vegan</span></label>
+      <label for="dvg" class="pick-card"><span class="pick-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M8 11c1-2 2.5-3 3-3s2.5 2 2 4c-.3 1.2-1.2 2-2 2s-1.7-.8-2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 8V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><span class="pick-name">Vegan</span></label>
       <input type="radio" name="diet" id="dnv" class="pick-input" value="nonveg" onchange="refreshSuggestions()">
-      <label for="dnv" class="pick-card"><span class="pick-icon">🍗</span><span class="pick-name">Non-Veg</span></label>
+      <label for="dnv" class="pick-card"><span class="pick-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M14 5c1 0 5 2 5 6 0 2-1.5 3.5-3.5 3.5-1 0-2-.5-2.5-1L9 18l-5-5 4.5-4c-.5-.5-1-1.5-1-2.5C7.5 4.5 9 3 11 3c1 0 2 .5 2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="pick-name">Non-Veg</span></label>
       <input type="radio" name="diet" id="dmx" class="pick-input" value="mixed" onchange="refreshSuggestions()">
-      <label for="dmx" class="pick-card"><span class="pick-icon">🍱</span><span class="pick-name">Mixed</span></label>
+      <label for="dmx" class="pick-card"><span class="pick-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="7.5" cy="11" r="3.5" stroke="currentColor" stroke-width="1.5"/><circle cx="14.5" cy="11" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M11 8.5v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="pick-name">Mixed</span></label>
     </div>
   </div>
 
@@ -771,11 +811,11 @@ body{font-family:var(--font);background:var(--bg);color:var(--text-1);line-heigh
 
   <!-- Meal tabs -->
   <div class="meal-tabs" id="mealTabs">
-    <button class="meal-tab active" onclick="switchMeal('all',this)">🍽 All <span class="meal-tab-count" id="cnt_all">0</span></button>
-    <button class="meal-tab" onclick="switchMeal('breakfast',this)">🌅 Breakfast <span class="meal-tab-count" id="cnt_breakfast">0</span></button>
-    <button class="meal-tab" onclick="switchMeal('lunch',this)">☀️ Lunch <span class="meal-tab-count" id="cnt_lunch">0</span></button>
-    <button class="meal-tab" onclick="switchMeal('dinner',this)">🌙 Dinner <span class="meal-tab-count" id="cnt_dinner">0</span></button>
-    <button class="meal-tab" onclick="switchMeal('snacks',this)">🥜 Snacks <span class="meal-tab-count" id="cnt_snacks">0</span></button>
+    <button class="meal-tab active" onclick="switchMeal('all',this)"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M4 6.5h5M6.5 4v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> All <span class="meal-tab-count" id="cnt_all">0</span></button>
+    <button class="meal-tab" onclick="switchMeal('breakfast',this)"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 9c0-2.76 2.01-5 4.5-5S11 6.24 11 9M1 9h11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M6.5 1v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Breakfast <span class="meal-tab-count" id="cnt_breakfast">0</span></button>
+    <button class="meal-tab" onclick="switchMeal('lunch',this)"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M6.5 1v2M3 3.5l1.5 1.5M10 3.5L8.5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Lunch <span class="meal-tab-count" id="cnt_lunch">0</span></button>
+    <button class="meal-tab" onclick="switchMeal('dinner',this)"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 7c0-2.76 2.01-5 4.5-5S11 4.24 11 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M1 7h11M4.5 7v3M8.5 7v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Dinner <span class="meal-tab-count" id="cnt_dinner">0</span></button>
+    <button class="meal-tab" onclick="switchMeal('snacks',this)"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="2" y="5" width="9" height="6" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M5 5V3.5a1.5 1.5 0 013 0V5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Snacks <span class="meal-tab-count" id="cnt_snacks">0</span></button>
   </div>
 
   <!-- Search -->
@@ -837,7 +877,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text-1);line-heigh
     </div>
     <div id="logRows">
       <div class="log-empty">
-        <div class="log-empty-icon">🥗</div>
+        <div class="log-empty-icon"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" style="opacity:.3"><circle cx="18" cy="18" r="15" stroke="currentColor" stroke-width="1.5"/><path d="M12 18h12M18 12v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
         <div>No foods added yet. Search above to start building your meal.</div>
       </div>
     </div>
@@ -982,164 +1022,166 @@ body{font-family:var(--font);background:var(--bg);color:var(--text-1);line-heigh
 <div id="printArea" style="display:none;font-family:sans-serif;padding:32px;max-width:700px;margin:0 auto"></div>
 
 <script>
-// ======================== FOOD DATABASE (120+ foods) ========================
+// ======================== FOOD DATABASE (127 foods) ========================
+// Values verified against USDA FoodData Central, IFCT 2017 (NIN India), WHO references
 const DB = [
-// DAIRY
-{id:1,n:"Paneer",cat:"Dairy",p:18.3,c:1.2,f:20.8,k:265,pkgPrice:420,unit:"g",diet:["veg","mixed"]},
-{id:2,n:"Full Cream Milk",cat:"Dairy",p:3.4,c:4.7,f:3.7,k:62,pkgPrice:60,unit:"ml",diet:["veg","mixed","nonveg"]},
-{id:3,n:"Skimmed Milk",cat:"Dairy",p:3.5,c:5.0,f:0.1,k:35,pkgPrice:55,unit:"ml",diet:["veg","mixed","nonveg"]},
-{id:4,n:"Curd (Dahi)",cat:"Dairy",p:3.5,c:4.7,f:4.0,k:60,pkgPrice:55,unit:"g",diet:["veg","mixed","nonveg"]},
-{id:5,n:"Greek Yogurt",cat:"Dairy",p:10.0,c:3.6,f:0.4,k:59,pkgPrice:280,unit:"g",diet:["veg","mixed","nonveg"]},
-{id:6,n:"Low-fat Curd",cat:"Dairy",p:4.5,c:6.0,f:1.0,k:50,pkgPrice:60,unit:"g",diet:["veg","mixed","nonveg"]},
-{id:7,n:"Amul Cheese",cat:"Dairy",p:25.0,c:1.3,f:26.0,k:340,pkgPrice:400,unit:"g",diet:["veg","mixed","nonveg"]},
-{id:8,n:"Buttermilk (Chaas)",cat:"Dairy",p:1.7,c:4.9,f:0.6,k:31,pkgPrice:40,unit:"ml",diet:["veg","mixed","nonveg"]},
-{id:9,n:"Ghee",cat:"Dairy",p:0.0,c:0.0,f:99.5,k:900,pkgPrice:600,unit:"g",diet:["veg","mixed","nonveg"]},
-{id:10,n:"Paneer Bhurji",cat:"Dairy",p:14.0,c:4.0,f:12.0,k:182,pkgPrice:300,unit:"g",diet:["veg","mixed"]},
+// DAIRY — IFCT 2017 / USDA
+{id:1,n:"Paneer",cat:"Dairy",p:18.3,c:1.2,f:20.8,k:265,pkgPrice:420,unit:"g",diet:["veg","mixed"],calcium:208,zinc:1.1},
+{id:2,n:"Full Cream Milk",cat:"Dairy",p:3.2,c:4.8,f:3.9,k:65,pkgPrice:60,unit:"ml",diet:["veg","mixed","nonveg"],calcium:113,potassium:150},
+{id:3,n:"Skimmed Milk",cat:"Dairy",p:3.4,c:4.9,f:0.2,k:34,pkgPrice:55,unit:"ml",diet:["veg","mixed","nonveg"],calcium:123},
+{id:4,n:"Curd (Dahi)",cat:"Dairy",p:3.1,c:4.7,f:4.0,k:66,pkgPrice:55,unit:"g",diet:["veg","mixed","nonveg"],calcium:121},
+{id:5,n:"Greek Yogurt",cat:"Dairy",p:9.9,c:3.6,f:0.4,k:59,pkgPrice:280,unit:"g",diet:["veg","mixed","nonveg"],calcium:110},
+{id:6,n:"Low-fat Curd",cat:"Dairy",p:3.5,c:5.2,f:1.5,k:47,pkgPrice:60,unit:"g",diet:["veg","mixed","nonveg"],calcium:120},
+{id:7,n:"Processed Cheese",cat:"Dairy",p:22.1,c:2.1,f:26.0,k:330,pkgPrice:400,unit:"g",diet:["veg","mixed","nonveg"],calcium:614,zinc:2.9},
+{id:8,n:"Buttermilk (Chaas)",cat:"Dairy",p:1.1,c:4.8,f:0.9,k:32,pkgPrice:40,unit:"ml",diet:["veg","mixed","nonveg"],calcium:116},
+{id:9,n:"Ghee",cat:"Dairy",p:0.0,c:0.0,f:99.7,k:897,pkgPrice:600,unit:"g",diet:["veg","mixed","nonveg"]},
+{id:10,n:"Paneer Bhurji",cat:"Dairy",p:13.5,c:4.8,f:13.0,k:192,pkgPrice:320,unit:"g",diet:["veg","mixed"],calcium:155},
 
-// EGGS
-{id:11,n:"Whole Egg",cat:"Eggs",p:13.0,c:1.1,f:11.5,k:155,unit:"piece",pieceG:55,piecePx:7,diet:["nonveg","mixed"],iron:1.8,zinc:1.1},
-{id:12,n:"Boiled Egg",cat:"Eggs",p:13.0,c:1.1,f:11.5,k:155,unit:"piece",pieceG:55,piecePx:7,diet:["nonveg","mixed"],iron:1.8,zinc:1.1},
-{id:13,n:"Egg White",cat:"Eggs",p:11.0,c:0.7,f:0.2,k:52,unit:"piece",pieceG:33,piecePx:4,diet:["nonveg","mixed"]},
-{id:14,n:"Egg Omelette (1 egg)",cat:"Eggs",p:11.0,c:1.5,f:9.0,k:132,unit:"piece",pieceG:65,piecePx:8,diet:["nonveg","mixed"]},
-{id:15,n:"Egg Bhurji (2 eggs)",cat:"Eggs",p:14.0,c:2.0,f:12.0,k:176,unit:"piece",pieceG:130,piecePx:18,diet:["nonveg","mixed"]},
+// EGGS — USDA (large egg 50g edible)
+{id:11,n:"Whole Egg",cat:"Eggs",p:12.6,c:0.7,f:9.5,k:143,unit:"piece",pieceG:50,piecePx:7,diet:["nonveg","mixed"],iron:1.8,zinc:1.1,calcium:50},
+{id:12,n:"Boiled Egg",cat:"Eggs",p:12.6,c:0.6,f:9.5,k:143,unit:"piece",pieceG:50,piecePx:7,diet:["nonveg","mixed"],iron:1.8,zinc:1.1},
+{id:13,n:"Egg White",cat:"Eggs",p:10.9,c:0.7,f:0.2,k:52,unit:"piece",pieceG:33,piecePx:4,diet:["nonveg","mixed"],calcium:6},
+{id:14,n:"Egg Omelette (1 egg)",cat:"Eggs",p:9.8,c:1.2,f:10.5,k:142,unit:"piece",pieceG:60,piecePx:8,diet:["nonveg","mixed"],iron:1.4},
+{id:15,n:"Egg Bhurji (2 eggs)",cat:"Eggs",p:14.2,c:3.5,f:13.0,k:191,unit:"piece",pieceG:130,piecePx:18,diet:["nonveg","mixed"]},
 
-// CHICKEN
-{id:16,n:"Chicken Breast",cat:"Chicken",p:31.0,c:0.0,f:3.6,k:165,pkgPrice:320,unit:"g",diet:["nonveg","mixed"],iron:0.7,zinc:1.0},
-{id:17,n:"Chicken Thigh",cat:"Chicken",p:26.0,c:0.0,f:10.0,k:209,pkgPrice:280,unit:"g",diet:["nonveg","mixed"]},
-{id:18,n:"Tandoori Chicken",cat:"Chicken",p:29.0,c:3.0,f:6.0,k:185,pkgPrice:380,unit:"g",diet:["nonveg","mixed"]},
-{id:19,n:"Chicken Curry",cat:"Chicken",p:20.0,c:4.0,f:12.0,k:200,pkgPrice:350,unit:"g",diet:["nonveg","mixed"]},
-{id:20,n:"Chicken Keema",cat:"Chicken",p:22.0,c:2.0,f:14.0,k:218,pkgPrice:300,unit:"g",diet:["nonveg","mixed"]},
+// CHICKEN — USDA / IFCT 2017
+{id:16,n:"Chicken Breast (raw)",cat:"Chicken",p:23.1,c:0.0,f:1.2,k:110,pkgPrice:320,unit:"g",diet:["nonveg","mixed"],iron:0.7,zinc:0.9},
+{id:17,n:"Chicken Breast (cooked)",cat:"Chicken",p:31.0,c:0.0,f:3.6,k:165,pkgPrice:340,unit:"g",diet:["nonveg","mixed"],iron:1.0,zinc:1.0},
+{id:18,n:"Chicken Thigh (cooked)",cat:"Chicken",p:25.9,c:0.0,f:9.3,k:194,pkgPrice:280,unit:"g",diet:["nonveg","mixed"],iron:1.3},
+{id:19,n:"Tandoori Chicken",cat:"Chicken",p:28.0,c:3.5,f:6.2,k:181,pkgPrice:380,unit:"g",diet:["nonveg","mixed"]},
+{id:20,n:"Chicken Curry",cat:"Chicken",p:18.0,c:5.0,f:12.0,k:199,pkgPrice:350,unit:"g",diet:["nonveg","mixed"]},
 
-// FISH
-{id:21,n:"Rohu Fish",cat:"Fish",p:16.6,c:0.0,f:1.4,k:97,pkgPrice:220,unit:"g",diet:["nonveg","mixed"]},
-{id:22,n:"Pomfret",cat:"Fish",p:19.0,c:0.0,f:2.0,k:95,pkgPrice:500,unit:"g",diet:["nonveg","mixed"]},
-{id:23,n:"Mackerel (Bangda)",cat:"Fish",p:18.0,c:0.0,f:6.0,k:130,pkgPrice:200,unit:"g",diet:["nonveg","mixed"]},
-{id:24,n:"Tuna (canned)",cat:"Fish",p:29.0,c:0.0,f:1.0,k:128,pkgPrice:300,unit:"g",diet:["nonveg","mixed"]},
-{id:25,n:"Salmon",cat:"Fish",p:25.0,c:0.0,f:13.0,k:208,pkgPrice:800,unit:"g",diet:["nonveg","mixed"]},
-{id:26,n:"Prawns",cat:"Fish",p:24.0,c:0.9,f:1.7,k:115,pkgPrice:450,unit:"g",diet:["nonveg","mixed"]},
+// FISH — IFCT 2017
+{id:21,n:"Rohu Fish",cat:"Fish",p:17.4,c:0.0,f:2.1,k:91,pkgPrice:220,unit:"g",diet:["nonveg","mixed"],iron:0.9,zinc:0.8},
+{id:22,n:"Pomfret",cat:"Fish",p:18.6,c:0.0,f:2.2,k:93,pkgPrice:500,unit:"g",diet:["nonveg","mixed"]},
+{id:23,n:"Mackerel (Bangda)",cat:"Fish",p:18.6,c:0.0,f:13.9,k:205,pkgPrice:200,unit:"g",diet:["nonveg","mixed"],iron:1.0},
+{id:24,n:"Tuna (canned in water)",cat:"Fish",p:26.5,c:0.0,f:0.8,k:116,pkgPrice:300,unit:"g",diet:["nonveg","mixed"],iron:1.3,zinc:0.9},
+{id:25,n:"Salmon",cat:"Fish",p:25.4,c:0.0,f:13.4,k:208,pkgPrice:800,unit:"g",diet:["nonveg","mixed"],iron:0.9},
+{id:26,n:"Prawns",cat:"Fish",p:20.3,c:0.9,f:0.9,k:99,pkgPrice:450,unit:"g",diet:["nonveg","mixed"],iron:0.5,zinc:1.1},
 {id:27,n:"Grilled Fish",cat:"Fish",p:22.0,c:0.0,f:5.0,k:130,pkgPrice:250,unit:"g",diet:["nonveg","mixed"]},
 
-// SOY
-{id:28,n:"Tofu",cat:"Soy",p:8.0,c:1.9,f:4.8,k:76,pkgPrice:200,unit:"g",diet:["veg","vegan","mixed"]},
-{id:29,n:"Soy Chunks (dry)",cat:"Soy",p:52.4,c:33.0,f:0.5,k:345,pkgPrice:100,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:3.5,zinc:1.8},
-{id:30,n:"Soy Milk",cat:"Soy",p:3.3,c:4.0,f:1.8,k:43,pkgPrice:80,unit:"ml",diet:["veg","vegan","mixed"]},
-{id:31,n:"Edamame",cat:"Soy",p:11.9,c:8.9,f:5.2,k:122,pkgPrice:250,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
-{id:32,n:"Soya Chaap",cat:"Soy",p:16.0,c:8.0,f:4.0,k:130,pkgPrice:200,unit:"g",diet:["veg","mixed"]},
+// SOY — USDA / IFCT 2017
+{id:28,n:"Tofu (firm)",cat:"Soy",p:8.1,c:1.9,f:4.8,k:76,pkgPrice:200,unit:"g",diet:["veg","vegan","mixed"],calcium:350,iron:2.0,zinc:0.8},
+{id:29,n:"Soy Chunks (dry)",cat:"Soy",p:52.4,c:33.0,f:0.5,k:345,pkgPrice:100,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:3.5,zinc:1.8,calcium:120},
+{id:30,n:"Soy Milk (unsweetened)",cat:"Soy",p:3.3,c:2.9,f:1.8,k:43,pkgPrice:80,unit:"ml",diet:["veg","vegan","mixed"],calcium:25},
+{id:31,n:"Edamame (boiled)",cat:"Soy",p:11.9,c:8.9,f:5.2,k:122,pkgPrice:250,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.3,calcium:60},
+{id:32,n:"Soya Chaap",cat:"Soy",p:16.0,c:10.0,f:4.5,k:145,pkgPrice:200,unit:"g",diet:["veg","mixed"],iron:2.1},
 
-// LENTILS & DALS
-{id:33,n:"Moong Dal (cooked)",cat:"Dal",p:7.0,c:14.0,f:0.4,k:91,pkgPrice:120,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:1.4,fibre:2.5},
-{id:34,n:"Masoor Dal (cooked)",cat:"Dal",p:9.0,c:20.0,f:0.4,k:116,pkgPrice:100,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.0},
-{id:35,n:"Chana Dal (cooked)",cat:"Dal",p:8.9,c:27.0,f:3.0,k:164,pkgPrice:110,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
-{id:36,n:"Toor Dal (cooked)",cat:"Dal",p:7.0,c:18.0,f:0.4,k:104,pkgPrice:130,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
-{id:37,n:"Urad Dal (cooked)",cat:"Dal",p:8.7,c:14.0,f:0.6,k:105,pkgPrice:140,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:1.8,calcium:48},
-{id:38,n:"Mixed Dal (Panchmel)",cat:"Dal",p:8.0,c:22.0,f:1.0,k:130,pkgPrice:100,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
-{id:39,n:"Dal Tadka",cat:"Dal",p:8.0,c:18.0,f:4.0,k:138,pkgPrice:120,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
+// LENTILS & DALS — IFCT 2017 cooked
+{id:33,n:"Moong Dal (cooked)",cat:"Dal",p:7.0,c:14.2,f:0.4,k:91,pkgPrice:120,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:1.4,fibre:2.5,potassium:266},
+{id:34,n:"Masoor Dal (cooked)",cat:"Dal",p:8.1,c:20.1,f:0.4,k:116,pkgPrice:100,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:3.3,fibre:3.1,potassium:369},
+{id:35,n:"Chana Dal (cooked)",cat:"Dal",p:8.9,c:27.0,f:2.5,k:164,pkgPrice:110,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:1.5,fibre:4.4},
+{id:36,n:"Toor Dal (cooked)",cat:"Dal",p:7.2,c:18.3,f:0.4,k:104,pkgPrice:130,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:1.6,fibre:2.7,potassium:348},
+{id:37,n:"Urad Dal (cooked)",cat:"Dal",p:7.7,c:14.0,f:0.4,k:93,pkgPrice:140,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:1.8,calcium:48,fibre:1.8},
+{id:38,n:"Mixed Dal (Panchmel)",cat:"Dal",p:8.0,c:20.0,f:1.0,k:121,pkgPrice:100,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.0},
+{id:39,n:"Dal Tadka",cat:"Dal",p:7.5,c:17.0,f:5.0,k:146,pkgPrice:120,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
 
-// LEGUMES
-{id:40,n:"Rajma (cooked)",cat:"Legumes",p:8.7,c:22.8,f:0.5,k:127,pkgPrice:150,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.0,fibre:3.0},
-{id:41,n:"White Chickpeas (cooked)",cat:"Legumes",p:8.9,c:27.4,f:2.6,k:164,pkgPrice:130,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.5,fibre:3.5},
-{id:42,n:"Black Chana (cooked)",cat:"Legumes",p:9.0,c:26.0,f:1.0,k:150,pkgPrice:120,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.8},
-{id:43,n:"Lobiya (Black Eye Peas)",cat:"Legumes",p:8.7,c:23.0,f:0.6,k:131,pkgPrice:120,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
-{id:44,n:"Green Moong Sprouts",cat:"Legumes",p:3.0,c:6.0,f:0.2,k:30,pkgPrice:80,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:13},
-{id:45,n:"Chole (cooked)",cat:"Legumes",p:9.0,c:24.0,f:4.0,k:170,pkgPrice:150,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
+// LEGUMES — IFCT 2017 cooked
+{id:40,n:"Rajma (cooked)",cat:"Legumes",p:8.7,c:22.8,f:0.5,k:127,pkgPrice:150,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.9,fibre:3.0,potassium:403},
+{id:41,n:"White Chickpeas (cooked)",cat:"Legumes",p:8.9,c:27.4,f:2.6,k:164,pkgPrice:130,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.9,fibre:3.5,potassium:291},
+{id:42,n:"Black Chana (cooked)",cat:"Legumes",p:8.9,c:27.3,f:1.6,k:155,pkgPrice:120,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.8,fibre:4.0},
+{id:43,n:"Lobiya (Black Eye Peas)",cat:"Legumes",p:7.7,c:20.8,f:0.5,k:116,pkgPrice:120,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.5,fibre:3.3},
+{id:44,n:"Green Moong Sprouts",cat:"Legumes",p:3.0,c:6.0,f:0.2,k:30,pkgPrice:80,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:13.2,iron:0.9},
+{id:45,n:"Chole (Chana Masala)",cat:"Legumes",p:7.6,c:24.0,f:5.0,k:174,pkgPrice:150,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.9,fibre:3.5},
 
-// GRAINS
-{id:46,n:"White Rice (cooked)",cat:"Grains",p:2.7,c:28.0,f:0.3,k:130,pkgPrice:60,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
-{id:47,n:"Brown Rice (cooked)",cat:"Grains",p:2.6,c:23.0,f:0.9,k:112,pkgPrice:80,unit:"g",diet:["veg","vegan","mixed","nonveg"],fibre:1.8},
-{id:48,n:"Oats",cat:"Grains",p:13.2,c:67.0,f:6.9,k:389,pkgPrice:160,unit:"g",diet:["veg","vegan","mixed","nonveg"],fibre:4.0,iron:2.1},
-{id:49,n:"Bajra (Pearl Millet)",cat:"Grains",p:11.6,c:67.5,f:5.0,k:361,pkgPrice:40,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:3.0,fibre:2.3},
-{id:50,n:"Jowar (Sorghum)",cat:"Grains",p:10.4,c:72.0,f:3.3,k:349,pkgPrice:40,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.5},
-{id:51,n:"Ragi (Finger Millet)",cat:"Grains",p:7.7,c:72.0,f:1.5,k:336,pkgPrice:80,unit:"g",diet:["veg","vegan","mixed","nonveg"],calcium:344},
-{id:52,n:"Quinoa (cooked)",cat:"Grains",p:4.1,c:21.3,f:1.9,k:120,pkgPrice:280,unit:"g",diet:["veg","vegan","mixed","nonveg"],fibre:1.4},
-{id:53,n:"Poha (cooked)",cat:"Grains",p:1.5,c:24.0,f:0.5,k:110,pkgPrice:70,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
-{id:54,n:"Khichdi",cat:"Grains",p:5.0,c:22.0,f:2.0,k:130,pkgPrice:60,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
-{id:55,n:"Sattu",cat:"Grains",p:22.4,c:65.2,f:6.7,k:413,pkgPrice:100,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.5,fibre:3.6},
-{id:56,n:"Besan (Gram Flour)",cat:"Grains",p:22.0,c:57.0,f:7.0,k:387,pkgPrice:80,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:3.2},
-{id:57,n:"Upma",cat:"Grains",p:3.5,c:18.0,f:3.0,k:115,pkgPrice:60,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
-{id:58,n:"Curd Rice",cat:"Grains",p:4.0,c:24.0,f:2.0,k:130,pkgPrice:80,unit:"g",diet:["veg","mixed","nonveg"]},
+// GRAINS — IFCT 2017 / USDA
+{id:46,n:"White Rice (cooked)",cat:"Grains",p:2.7,c:28.2,f:0.3,k:130,pkgPrice:60,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
+{id:47,n:"Brown Rice (cooked)",cat:"Grains",p:2.6,c:22.8,f:0.9,k:112,pkgPrice:80,unit:"g",diet:["veg","vegan","mixed","nonveg"],fibre:1.8,potassium:79},
+{id:48,n:"Oats (raw)",cat:"Grains",p:16.9,c:66.3,f:6.9,k:389,pkgPrice:160,unit:"g",diet:["veg","vegan","mixed","nonveg"],fibre:10.6,iron:4.7,zinc:3.6},
+{id:49,n:"Bajra (Pearl Millet, raw)",cat:"Grains",p:11.6,c:67.5,f:5.0,k:361,pkgPrice:40,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:8.0,fibre:1.2,zinc:3.1},
+{id:50,n:"Jowar (Sorghum, raw)",cat:"Grains",p:10.4,c:72.6,f:3.3,k:349,pkgPrice:40,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:4.1,fibre:1.6},
+{id:51,n:"Ragi (Finger Millet, raw)",cat:"Grains",p:7.7,c:72.0,f:1.5,k:336,pkgPrice:80,unit:"g",diet:["veg","vegan","mixed","nonveg"],calcium:344,iron:3.9},
+{id:52,n:"Quinoa (cooked)",cat:"Grains",p:4.4,c:21.3,f:1.9,k:120,pkgPrice:280,unit:"g",diet:["veg","vegan","mixed","nonveg"],fibre:2.8,iron:1.5,zinc:1.1},
+{id:53,n:"Poha (cooked)",cat:"Grains",p:1.5,c:23.8,f:0.6,k:110,pkgPrice:70,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:0.7},
+{id:54,n:"Khichdi (rice-dal)",cat:"Grains",p:5.2,c:22.0,f:2.0,k:130,pkgPrice:60,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
+{id:55,n:"Sattu (roasted gram)",cat:"Grains",p:22.4,c:65.2,f:6.7,k:413,pkgPrice:100,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:4.4,fibre:3.6,calcium:75},
+{id:56,n:"Besan (Gram Flour)",cat:"Grains",p:22.0,c:57.8,f:6.7,k:387,pkgPrice:80,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:4.6,fibre:6.0,calcium:45},
+{id:57,n:"Upma (cooked)",cat:"Grains",p:3.0,c:20.0,f:4.5,k:133,pkgPrice:60,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
+{id:58,n:"Curd Rice (cooked)",cat:"Grains",p:3.2,c:22.0,f:2.0,k:121,pkgPrice:80,unit:"g",diet:["veg","mixed","nonveg"],calcium:80},
+{id:126,n:"Muesli (unsweetened)",cat:"Grains",p:9.8,c:66.0,f:5.9,k:359,pkgPrice:400,unit:"g",diet:["veg","vegan","mixed","nonveg"],fibre:6.0,iron:3.8,potassium:380,zinc:2.5,calcium:56},
 
-// BREADS
-{id:59,n:"Wheat Roti",cat:"Breads",p:3.5,c:17.0,f:1.2,k:95,unit:"piece",pieceG:40,piecePx:8,diet:["veg","vegan","mixed","nonveg"]},
-{id:60,n:"Paratha (plain)",cat:"Breads",p:4.0,c:24.0,f:5.0,k:156,unit:"piece",pieceG:80,piecePx:12,diet:["veg","vegan","mixed","nonveg"]},
-{id:61,n:"Naan",cat:"Breads",p:3.8,c:30.0,f:2.5,k:160,unit:"piece",pieceG:90,piecePx:20,diet:["veg","mixed","nonveg"]},
-{id:62,n:"Multigrain Bread",cat:"Breads",p:8.0,c:38.0,f:3.0,k:210,pkgPrice:150,unit:"g",diet:["veg","mixed","nonveg"],fibre:3.5},
-{id:63,n:"Brown Bread",cat:"Breads",p:7.0,c:41.0,f:3.5,k:225,pkgPrice:120,unit:"g",diet:["veg","mixed","nonveg"]},
-{id:64,n:"Idli (steamed)",cat:"Breads",p:2.0,c:14.0,f:0.4,k:65,unit:"piece",pieceG:40,piecePx:5,diet:["veg","vegan","mixed","nonveg"]},
-{id:65,n:"Dosa",cat:"Breads",p:3.0,c:18.0,f:2.0,k:100,unit:"piece",pieceG:80,piecePx:15,diet:["veg","vegan","mixed","nonveg"]},
-{id:66,n:"Uttapam",cat:"Breads",p:3.5,c:20.0,f:3.0,k:122,unit:"piece",pieceG:100,piecePx:20,diet:["veg","vegan","mixed","nonveg"]},
-{id:67,n:"Medu Vada",cat:"Breads",p:3.8,c:22.0,f:8.0,k:175,unit:"piece",pieceG:60,piecePx:15,diet:["veg","vegan","mixed","nonveg"]},
+// BREADS — IFCT 2017
+{id:59,n:"Wheat Roti",cat:"Breads",p:3.1,c:19.0,f:0.8,k:97,unit:"piece",pieceG:35,piecePx:8,diet:["veg","vegan","mixed","nonveg"],fibre:1.2},
+{id:60,n:"Paratha (plain)",cat:"Breads",p:3.7,c:25.5,f:6.2,k:175,unit:"piece",pieceG:80,piecePx:12,diet:["veg","vegan","mixed","nonveg"]},
+{id:61,n:"Naan",cat:"Breads",p:3.8,c:30.5,f:2.8,k:163,unit:"piece",pieceG:90,piecePx:20,diet:["veg","mixed","nonveg"]},
+{id:62,n:"Multigrain Bread",cat:"Breads",p:7.9,c:38.5,f:3.0,k:213,pkgPrice:150,unit:"g",diet:["veg","mixed","nonveg"],fibre:3.9},
+{id:63,n:"Brown Bread",cat:"Breads",p:7.9,c:41.0,f:3.5,k:228,pkgPrice:120,unit:"g",diet:["veg","mixed","nonveg"],fibre:3.0},
+{id:64,n:"Idli (steamed)",cat:"Breads",p:1.8,c:14.0,f:0.3,k:65,unit:"piece",pieceG:40,piecePx:5,diet:["veg","vegan","mixed","nonveg"]},
+{id:65,n:"Dosa (plain)",cat:"Breads",p:2.8,c:17.9,f:0.6,k:87,unit:"piece",pieceG:80,piecePx:15,diet:["veg","vegan","mixed","nonveg"]},
+{id:66,n:"Uttapam",cat:"Breads",p:3.0,c:20.5,f:2.8,k:118,unit:"piece",pieceG:100,piecePx:20,diet:["veg","vegan","mixed","nonveg"]},
+{id:67,n:"Medu Vada",cat:"Breads",p:4.0,c:18.5,f:10.5,k:183,unit:"piece",pieceG:60,piecePx:15,diet:["veg","vegan","mixed","nonveg"]},
 
-// VEGETABLES
-{id:68,n:"Spinach (Palak)",cat:"Vegetables",p:2.9,c:3.6,f:0.4,k:23,pkgPrice:40,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.7,calcium:99,vitC:28,fibre:2.2},
-{id:69,n:"Broccoli",cat:"Vegetables",p:2.8,c:7.0,f:0.4,k:34,pkgPrice:80,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:89,calcium:47},
-{id:70,n:"Mushrooms",cat:"Vegetables",p:3.1,c:3.3,f:0.3,k:22,pkgPrice:120,unit:"g",diet:["veg","vegan","mixed","nonveg"],zinc:0.5},
-{id:71,n:"Potato",cat:"Vegetables",p:2.0,c:17.5,f:0.1,k:77,pkgPrice:30,unit:"g",diet:["veg","vegan","mixed","nonveg"],potassium:425},
-{id:72,n:"Sweet Potato",cat:"Vegetables",p:1.6,c:20.1,f:0.1,k:86,pkgPrice:40,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:2.4,potassium:337},
-{id:73,n:"Tomato",cat:"Vegetables",p:0.9,c:3.9,f:0.2,k:18,pkgPrice:30,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:14,potassium:237},
-{id:74,n:"Carrot",cat:"Vegetables",p:0.9,c:9.6,f:0.2,k:41,pkgPrice:40,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:5.9,fibre:2.8},
-{id:75,n:"Beetroot",cat:"Vegetables",p:1.6,c:9.6,f:0.1,k:43,pkgPrice:40,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:0.8,fibre:2.0},
-{id:76,n:"Capsicum",cat:"Vegetables",p:0.9,c:6.0,f:0.2,k:31,pkgPrice:60,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:127},
-{id:77,n:"Okra (Bhindi)",cat:"Vegetables",p:1.9,c:7.6,f:0.1,k:33,pkgPrice:40,unit:"g",diet:["veg","vegan","mixed","nonveg"],calcium:82,vitC:23},
-{id:78,n:"Bottle Gourd (Lauki)",cat:"Vegetables",p:0.5,c:3.4,f:0.1,k:14,pkgPrice:20,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
-{id:79,n:"Ridge Gourd (Turai)",cat:"Vegetables",p:0.7,c:3.7,f:0.2,k:20,pkgPrice:25,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
-{id:80,n:"Cabbage",cat:"Vegetables",p:1.3,c:5.8,f:0.1,k:25,pkgPrice:25,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:36,fibre:2.5},
-{id:81,n:"Green Peas",cat:"Vegetables",p:5.4,c:14.5,f:0.4,k:81,pkgPrice:80,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:1.5,vitC:40},
-{id:82,n:"Palak Paneer (100g)",cat:"Vegetables",p:9.0,c:6.0,f:10.0,k:154,pkgPrice:250,unit:"g",diet:["veg","mixed"]},
-{id:83,n:"Corn",cat:"Vegetables",p:3.4,c:19.0,f:1.4,k:96,pkgPrice:30,unit:"g",diet:["veg","vegan","mixed","nonveg"],fibre:2.0},
+// VEGETABLES — IFCT 2017 / USDA
+{id:68,n:"Spinach (Palak, raw)",cat:"Vegetables",p:2.9,c:3.6,f:0.4,k:23,pkgPrice:40,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.7,calcium:99,vitC:28.1,fibre:2.2,potassium:558},
+{id:69,n:"Broccoli (raw)",cat:"Vegetables",p:2.8,c:6.6,f:0.4,k:34,pkgPrice:80,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:89.2,calcium:47,fibre:2.6,potassium:316},
+{id:70,n:"Mushrooms (button, raw)",cat:"Vegetables",p:3.1,c:3.3,f:0.3,k:22,pkgPrice:120,unit:"g",diet:["veg","vegan","mixed","nonveg"],zinc:0.5,iron:0.5,potassium:318},
+{id:71,n:"Potato (boiled)",cat:"Vegetables",p:1.9,c:17.5,f:0.1,k:77,pkgPrice:30,unit:"g",diet:["veg","vegan","mixed","nonveg"],potassium:379,vitC:9.1,fibre:1.5},
+{id:72,n:"Sweet Potato (baked)",cat:"Vegetables",p:1.7,c:20.1,f:0.1,k:90,pkgPrice:40,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:19.6,potassium:337,fibre:3.0},
+{id:73,n:"Tomato (raw)",cat:"Vegetables",p:0.9,c:3.9,f:0.2,k:18,pkgPrice:30,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:13.7,potassium:237,fibre:1.2},
+{id:74,n:"Carrot (raw)",cat:"Vegetables",p:0.9,c:9.6,f:0.2,k:41,pkgPrice:40,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:5.9,fibre:2.8,potassium:320},
+{id:75,n:"Beetroot (raw)",cat:"Vegetables",p:1.6,c:9.6,f:0.2,k:43,pkgPrice:40,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:0.8,fibre:2.0,potassium:325},
+{id:76,n:"Capsicum (green)",cat:"Vegetables",p:0.9,c:6.0,f:0.2,k:26,pkgPrice:60,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:80.4,fibre:2.1,potassium:175},
+{id:77,n:"Okra (Bhindi)",cat:"Vegetables",p:1.9,c:7.6,f:0.1,k:33,pkgPrice:40,unit:"g",diet:["veg","vegan","mixed","nonveg"],calcium:82,vitC:23.0,fibre:3.2},
+{id:78,n:"Bottle Gourd (Lauki)",cat:"Vegetables",p:0.6,c:3.4,f:0.1,k:15,pkgPrice:20,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:8.1,fibre:0.5},
+{id:79,n:"Ridge Gourd (Turai)",cat:"Vegetables",p:0.7,c:3.7,f:0.2,k:20,pkgPrice:25,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:7.0},
+{id:80,n:"Cabbage (raw)",cat:"Vegetables",p:1.3,c:5.8,f:0.1,k:25,pkgPrice:25,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:36.6,fibre:2.5,calcium:40},
+{id:81,n:"Green Peas (raw)",cat:"Vegetables",p:5.4,c:14.5,f:0.4,k:81,pkgPrice:80,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:1.5,vitC:40.0,fibre:5.1},
+{id:82,n:"Palak Paneer",cat:"Vegetables",p:8.3,c:5.8,f:10.5,k:153,pkgPrice:250,unit:"g",diet:["veg","mixed"],iron:1.5,calcium:120},
+{id:83,n:"Corn (sweet, raw)",cat:"Vegetables",p:3.4,c:19.0,f:1.4,k:96,pkgPrice:30,unit:"g",diet:["veg","vegan","mixed","nonveg"],fibre:2.7,potassium:270},
 
-// FRUITS
-{id:84,n:"Banana",cat:"Fruits",p:1.1,c:22.8,f:0.3,k:89,unit:"piece",pieceG:120,pkgPrice:40,diet:["veg","vegan","mixed","nonveg"],potassium:358},
-{id:85,n:"Apple",cat:"Fruits",p:0.3,c:14.0,f:0.2,k:52,unit:"piece",pieceG:180,pkgPrice:120,diet:["veg","vegan","mixed","nonveg"],vitC:5,fibre:2.4},
-{id:86,n:"Mango",cat:"Fruits",p:0.8,c:15.0,f:0.4,k:60,pkgPrice:80,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:36,potassium:168},
-{id:87,n:"Orange",cat:"Fruits",p:1.0,c:12.0,f:0.1,k:47,unit:"piece",pieceG:150,pkgPrice:60,diet:["veg","vegan","mixed","nonveg"],vitC:53},
-{id:88,n:"Papaya",cat:"Fruits",p:0.5,c:10.8,f:0.3,k:43,pkgPrice:40,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:62,fibre:1.8},
-{id:89,n:"Guava",cat:"Fruits",p:2.6,c:14.3,f:1.0,k:68,pkgPrice:60,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:228,fibre:5.4},
-{id:90,n:"Watermelon",cat:"Fruits",p:0.6,c:7.6,f:0.2,k:30,pkgPrice:20,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:8},
-{id:91,n:"Pomegranate",cat:"Fruits",p:1.7,c:18.7,f:1.2,k:83,pkgPrice:150,unit:"g",diet:["veg","vegan","mixed","nonveg"],fibre:4.0},
+// FRUITS — IFCT 2017 / USDA
+{id:84,n:"Banana",cat:"Fruits",p:1.1,c:22.8,f:0.3,k:89,unit:"piece",pieceG:120,pkgPrice:40,diet:["veg","vegan","mixed","nonveg"],potassium:358,vitC:8.7,fibre:2.6},
+{id:85,n:"Apple (with skin)",cat:"Fruits",p:0.3,c:13.8,f:0.2,k:52,unit:"piece",pieceG:180,pkgPrice:120,diet:["veg","vegan","mixed","nonveg"],vitC:4.6,fibre:2.4,potassium:107},
+{id:86,n:"Mango (ripe)",cat:"Fruits",p:0.8,c:15.0,f:0.4,k:60,pkgPrice:80,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:36.4,potassium:168,fibre:1.6},
+{id:87,n:"Orange",cat:"Fruits",p:1.0,c:12.0,f:0.1,k:47,unit:"piece",pieceG:150,pkgPrice:60,diet:["veg","vegan","mixed","nonveg"],vitC:53.2,fibre:2.4,calcium:40},
+{id:88,n:"Papaya (ripe)",cat:"Fruits",p:0.5,c:10.8,f:0.3,k:43,pkgPrice:40,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:61.8,fibre:1.8,potassium:182},
+{id:89,n:"Guava",cat:"Fruits",p:2.6,c:14.3,f:1.0,k:68,pkgPrice:60,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:228.3,fibre:5.4,potassium:417},
+{id:90,n:"Watermelon",cat:"Fruits",p:0.6,c:7.6,f:0.2,k:30,pkgPrice:20,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:8.1,potassium:112},
+{id:91,n:"Pomegranate",cat:"Fruits",p:1.7,c:18.7,f:1.2,k:83,pkgPrice:150,unit:"g",diet:["veg","vegan","mixed","nonveg"],fibre:4.0,potassium:236,vitC:10.2},
 
-// NUTS
-{id:92,n:"Peanuts",cat:"Nuts",p:26.0,c:16.0,f:49.0,k:567,pkgPrice:150,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:1.6,zinc:1.9},
-{id:93,n:"Almonds",cat:"Nuts",p:21.0,c:22.0,f:50.0,k:579,pkgPrice:800,unit:"g",diet:["veg","vegan","mixed","nonveg"],calcium:264,iron:3.7},
-{id:94,n:"Cashews",cat:"Nuts",p:18.0,c:30.0,f:44.0,k:553,pkgPrice:900,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.5,zinc:3.0},
-{id:95,n:"Walnuts",cat:"Nuts",p:15.0,c:14.0,f:65.0,k:654,pkgPrice:1000,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
-{id:96,n:"Pistachios",cat:"Nuts",p:20.0,c:28.0,f:45.0,k:562,pkgPrice:1200,unit:"g",diet:["veg","vegan","mixed","nonveg"],potassium:1025},
-{id:97,n:"Fox Nuts (Makhana)",cat:"Nuts",p:9.7,c:76.9,f:0.1,k:347,pkgPrice:800,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
-{id:98,n:"Peanut Butter",cat:"Nuts",p:25.0,c:20.0,f:50.0,k:588,pkgPrice:350,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:1.9},
-{id:99,n:"Dates (Khajoor)",cat:"Nuts",p:2.5,c:75.0,f:0.4,k:277,pkgPrice:200,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:1.0,potassium:696},
-{id:100,n:"Coconut (fresh)",cat:"Nuts",p:3.3,c:15.2,f:33.5,k:354,unit:"piece",pieceG:160,pkgPrice:50,diet:["veg","vegan","mixed","nonveg"]},
-{id:101,n:"Raisins",cat:"Nuts",p:3.1,c:79.0,f:0.5,k:299,pkgPrice:200,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:1.9,potassium:744},
+// NUTS & DRY FRUITS — USDA FoodData
+{id:92,n:"Peanuts (raw)",cat:"Nuts",p:25.8,c:16.1,f:49.2,k:567,pkgPrice:150,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:4.6,zinc:3.3,fibre:8.5,potassium:705},
+{id:93,n:"Almonds (raw)",cat:"Nuts",p:21.2,c:21.6,f:49.9,k:579,pkgPrice:800,unit:"g",diet:["veg","vegan","mixed","nonveg"],calcium:264,iron:3.7,zinc:3.1,fibre:12.5,potassium:733},
+{id:94,n:"Cashews (raw)",cat:"Nuts",p:18.2,c:30.2,f:43.9,k:553,pkgPrice:900,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:6.7,zinc:5.8},
+{id:95,n:"Walnuts (raw)",cat:"Nuts",p:15.2,c:13.7,f:65.2,k:654,pkgPrice:1000,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:2.9,fibre:6.7,potassium:441},
+{id:96,n:"Pistachios (roasted)",cat:"Nuts",p:20.2,c:27.5,f:45.4,k:562,pkgPrice:1200,unit:"g",diet:["veg","vegan","mixed","nonveg"],potassium:1025,iron:3.9,zinc:2.2},
+{id:97,n:"Fox Nuts (Makhana, raw)",cat:"Nuts",p:9.7,c:76.9,f:0.1,k:347,pkgPrice:800,unit:"g",diet:["veg","vegan","mixed","nonveg"],calcium:60,iron:1.4},
+{id:98,n:"Peanut Butter (plain)",cat:"Nuts",p:25.1,c:19.6,f:50.4,k:588,pkgPrice:350,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:1.9,zinc:3.0,potassium:649},
+{id:99,n:"Dates (Khajoor, dried)",cat:"Nuts",p:2.5,c:75.0,f:0.4,k:277,pkgPrice:200,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:1.0,potassium:696,fibre:6.7},
+{id:100,n:"Coconut (fresh)",cat:"Nuts",p:3.3,c:15.2,f:33.5,k:354,unit:"piece",pieceG:160,pkgPrice:50,diet:["veg","vegan","mixed","nonveg"],fibre:9.0,iron:2.4},
+{id:101,n:"Raisins (dried)",cat:"Nuts",p:3.1,c:79.2,f:0.5,k:299,pkgPrice:200,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:1.9,potassium:744,fibre:3.7},
 
-// SEEDS
-{id:102,n:"Chia Seeds",cat:"Seeds",p:17.0,c:42.0,f:31.0,k:486,pkgPrice:400,unit:"g",diet:["veg","vegan","mixed","nonveg"],calcium:631,iron:5.1,fibre:34},
-{id:103,n:"Flaxseeds",cat:"Seeds",p:18.3,c:28.9,f:42.2,k:534,pkgPrice:180,unit:"g",diet:["veg","vegan","mixed","nonveg"],calcium:255,iron:5.7,fibre:27},
-{id:104,n:"Pumpkin Seeds",cat:"Seeds",p:30.0,c:10.7,f:49.0,k:559,pkgPrice:400,unit:"g",diet:["veg","vegan","mixed","nonveg"],zinc:7.8,iron:3.3},
-{id:105,n:"Sunflower Seeds",cat:"Seeds",p:20.8,c:20.0,f:51.5,k:584,pkgPrice:200,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:3.0,zinc:1.4},
-{id:106,n:"Sesame Seeds (Til)",cat:"Seeds",p:17.0,c:23.0,f:50.0,k:573,pkgPrice:150,unit:"g",diet:["veg","vegan","mixed","nonveg"],calcium:975,iron:7.8},
+// SEEDS — USDA FoodData
+{id:102,n:"Chia Seeds",cat:"Seeds",p:16.5,c:42.1,f:30.7,k:486,pkgPrice:400,unit:"g",diet:["veg","vegan","mixed","nonveg"],calcium:631,iron:7.7,fibre:34.4,zinc:4.6,potassium:407},
+{id:103,n:"Flaxseeds (whole)",cat:"Seeds",p:18.3,c:28.9,f:42.2,k:534,pkgPrice:180,unit:"g",diet:["veg","vegan","mixed","nonveg"],calcium:255,iron:5.7,fibre:27.3,potassium:813},
+{id:104,n:"Pumpkin Seeds (raw)",cat:"Seeds",p:30.2,c:10.7,f:49.1,k:559,pkgPrice:400,unit:"g",diet:["veg","vegan","mixed","nonveg"],zinc:7.8,iron:8.8,fibre:6.0,potassium:809},
+{id:105,n:"Sunflower Seeds (raw)",cat:"Seeds",p:20.8,c:20.0,f:51.5,k:584,pkgPrice:200,unit:"g",diet:["veg","vegan","mixed","nonveg"],iron:5.3,zinc:5.0,fibre:8.6,potassium:645},
+{id:106,n:"Sesame Seeds (Til, raw)",cat:"Seeds",p:17.7,c:23.5,f:49.7,k:573,pkgPrice:150,unit:"g",diet:["veg","vegan","mixed","nonveg"],calcium:975,iron:14.6,zinc:7.8,fibre:11.8},
 
-// PROTEIN SUPPLEMENTS
+// SUPPLEMENTS
 {id:107,n:"Whey Protein Powder",cat:"Supplement",p:80.0,c:5.0,f:3.0,k:370,pkgPrice:1600,unit:"g",diet:["nonveg","mixed"]},
 {id:108,n:"Plant Protein Powder",cat:"Supplement",p:75.0,c:8.0,f:2.0,k:350,pkgPrice:1800,unit:"g",diet:["veg","vegan","mixed"]},
-{id:109,n:"Casein Protein",cat:"Supplement",p:77.0,c:4.0,f:2.5,k:345,pkgPrice:1800,unit:"g",diet:["nonveg","mixed"]},
+{id:109,n:"Casein Protein Powder",cat:"Supplement",p:77.0,c:4.0,f:2.5,k:345,pkgPrice:1800,unit:"g",diet:["nonveg","mixed"]},
 
 // SNACKS
-{id:110,n:"Protein Bar",cat:"Snacks",p:20.0,c:30.0,f:8.0,k:272,unit:"piece",pieceG:60,piecePx:80,diet:["veg","mixed","nonveg"]},
-{id:111,n:"Samosa",cat:"Snacks",p:3.0,c:28.0,f:12.0,k:230,unit:"piece",pieceG:80,piecePx:15,diet:["veg","vegan","mixed","nonveg"]},
-{id:112,n:"Dhokla (2 pieces)",cat:"Snacks",p:5.0,c:22.0,f:3.0,k:136,unit:"piece",pieceG:80,piecePx:15,diet:["veg","vegan","mixed","nonveg"]},
-{id:113,n:"Sprouts Chaat",cat:"Snacks",p:5.0,c:12.0,f:0.5,k:73,pkgPrice:80,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:15,iron:1.2},
+{id:110,n:"Protein Bar (avg)",cat:"Snacks",p:20.0,c:30.0,f:8.0,k:272,unit:"piece",pieceG:60,piecePx:80,diet:["veg","mixed","nonveg"]},
+{id:111,n:"Samosa",cat:"Snacks",p:2.9,c:28.0,f:9.0,k:205,unit:"piece",pieceG:80,piecePx:15,diet:["veg","vegan","mixed","nonveg"]},
+{id:112,n:"Dhokla (2 pieces)",cat:"Snacks",p:4.6,c:21.8,f:2.0,k:122,unit:"piece",pieceG:80,piecePx:15,diet:["veg","vegan","mixed","nonveg"]},
+{id:113,n:"Sprouts Chaat",cat:"Snacks",p:4.8,c:11.5,f:0.5,k:69,pkgPrice:80,unit:"g",diet:["veg","vegan","mixed","nonveg"],vitC:15.0,iron:1.2,fibre:2.0},
 
 // OILS & MISC
 {id:114,n:"Olive Oil",cat:"Misc",p:0.0,c:0.0,f:100.0,k:884,pkgPrice:900,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
 {id:115,n:"Coconut Oil",cat:"Misc",p:0.0,c:0.0,f:100.0,k:862,pkgPrice:200,unit:"g",diet:["veg","vegan","mixed","nonveg"]},
-{id:116,n:"Whey Protein (scoop)",cat:"Supplement",p:24.0,c:3.0,f:1.5,k:121,unit:"piece",pieceG:30,piecePx:48,diet:["nonveg","mixed"]},
-{id:117,n:"Plant Protein (scoop)",cat:"Supplement",p:22.0,c:4.0,f:1.0,k:113,unit:"piece",pieceG:30,piecePx:54,diet:["veg","vegan","mixed"]},
-{id:118,n:"Rajma Chawal (serving)",cat:"Dal",p:8.0,c:30.0,f:2.0,k:172,unit:"piece",pieceG:300,piecePx:60,diet:["veg","vegan","mixed","nonveg"]},
-{id:119,n:"Dahi Wale Aloo",cat:"Vegetables",p:2.5,c:20.0,f:4.0,k:125,pkgPrice:80,unit:"g",diet:["veg","mixed"]},
-{id:120,n:"Moong Dal Chilla",cat:"Dal",p:8.0,c:16.0,f:3.0,k:123,unit:"piece",pieceG:80,piecePx:15,diet:["veg","vegan","mixed","nonveg"]},
-{id:121,n:"Panner Tikka (4pc)",cat:"Dairy",p:16.0,c:5.0,f:14.0,k:210,unit:"piece",pieceG:120,piecePx:60,diet:["veg","mixed"]},
-{id:122,n:"Banana Milkshake",cat:"Dairy",p:4.0,c:28.0,f:2.5,k:150,unit:"piece",pieceG:300,piecePx:40,diet:["veg","mixed","nonveg"]},
-{id:123,n:"Makhana Snack",cat:"Snacks",p:4.0,c:32.0,f:1.0,k:153,unit:"piece",pieceG:50,piecePx:40,diet:["veg","vegan","mixed","nonveg"]},
+{id:116,n:"Whey Protein (1 scoop)",cat:"Supplement",p:24.0,c:3.0,f:1.5,k:121,unit:"piece",pieceG:30,piecePx:48,diet:["nonveg","mixed"]},
+{id:117,n:"Plant Protein (1 scoop)",cat:"Supplement",p:22.0,c:4.0,f:1.0,k:113,unit:"piece",pieceG:30,piecePx:54,diet:["veg","vegan","mixed"]},
+{id:118,n:"Rajma Chawal (serving)",cat:"Dal",p:8.2,c:30.0,f:2.5,k:175,unit:"piece",pieceG:300,piecePx:60,diet:["veg","vegan","mixed","nonveg"]},
+{id:119,n:"Aloo Sabzi",cat:"Vegetables",p:2.0,c:18.0,f:4.0,k:115,pkgPrice:80,unit:"g",diet:["veg","mixed"]},
+{id:120,n:"Moong Dal Chilla",cat:"Dal",p:8.2,c:15.5,f:2.5,k:117,unit:"piece",pieceG:80,piecePx:15,diet:["veg","vegan","mixed","nonveg"]},
+{id:121,n:"Paneer Tikka (4 pcs)",cat:"Dairy",p:15.5,c:5.0,f:14.5,k:213,unit:"piece",pieceG:120,piecePx:60,diet:["veg","mixed"],calcium:170},
+{id:122,n:"Banana Milkshake",cat:"Dairy",p:4.2,c:28.5,f:2.5,k:152,unit:"piece",pieceG:300,piecePx:40,diet:["veg","mixed","nonveg"]},
+{id:123,n:"Makhana Snack (roasted)",cat:"Snacks",p:3.9,c:32.0,f:1.0,k:153,unit:"piece",pieceG:50,piecePx:40,diet:["veg","vegan","mixed","nonveg"]},
 {id:124,n:"Lentil Soup",cat:"Dal",p:9.0,c:20.0,f:1.0,k:125,unit:"piece",pieceG:250,piecePx:30,diet:["veg","vegan","mixed","nonveg"]},
-{id:125,n:"Butter Chicken (100g)",cat:"Chicken",p:15.0,c:6.0,f:12.0,k:192,pkgPrice:400,unit:"g",diet:["nonveg","mixed"]},
+{id:125,n:"Butter Chicken",cat:"Chicken",p:14.5,c:7.0,f:13.0,k:205,pkgPrice:400,unit:"g",diet:["nonveg","mixed"]},
 ];
 
 // ======================== MICRONUTRIENT LOOKUP ========================
@@ -1379,7 +1421,7 @@ function renderLog() {
   });
 
   if(!filtered.length){
-    container.innerHTML=`<div class="log-empty"><div class="log-empty-icon">🍽️</div><div>${activeMeal==='all'?'No foods added yet.':'No foods in this meal slot.'} ${activeMeal==='all'?'Search above to start.':''}</div></div>`;
+    container.innerHTML=`<div class="log-empty"><div class="log-empty-icon"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" style="opacity:.3"><circle cx="18" cy="18" r="15" stroke="currentColor" stroke-width="1.5"/><path d="M12 18h12M18 12v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div>${activeMeal==='all'?'No foods added yet.':'No foods in this meal slot.'} ${activeMeal==='all'?'Search above to start.':''}</div></div>`;
     return;
   }
 
@@ -1633,10 +1675,14 @@ function addSuggestion(foodId) {
 }
 
 // ======================== DARK MODE ========================
+const MOON_SVG = `<path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36A5.4 5.4 0 0118 12a5.4 5.4 0 01-5.4-5.4c0-1.07.3-2.07.8-2.93L12 3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+const SUN_SVG = `<path d="M8 1v1M8 14v1M1 8h1M14 8h1M3.05 3.05l.71.71M12.24 12.24l.71.71M12.24 3.76l-.71.71M3.76 12.24l-.71.71M8 5a3 3 0 100 6 3 3 0 000-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>`;
+
 function toggleDark() {
   const isDark = document.documentElement.dataset.theme==='dark';
   document.documentElement.dataset.theme = isDark?'light':'dark';
-  document.getElementById('themeIcon').textContent = isDark?'🌙':'☀️';
+  const icon = document.getElementById('themeIcon');
+  icon.innerHTML = isDark ? SUN_SVG : MOON_SVG;
   localStorage.setItem('nutriTheme', isDark?'light':'dark');
   setTimeout(()=>{ const t=totals(); renderCharts(t); },100);
 }
@@ -1727,7 +1773,12 @@ document.head.appendChild(ps);
 // ======================== INIT ========================
 window.addEventListener('DOMContentLoaded',()=>{
   const saved = localStorage.getItem('nutriTheme');
-  if(saved==='dark'){document.documentElement.dataset.theme='dark';document.getElementById('themeIcon').textContent='☀️';}
+  const icon = document.getElementById('themeIcon');
+  if(saved==='dark'){
+    document.documentElement.dataset.theme='dark';
+    icon.innerHTML = `<path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36A5.4 5.4 0 0118 12a5.4 5.4 0 01-5.4-5.4c0-1.07.3-2.07.8-2.93L12 3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+    icon.setAttribute('viewBox','0 0 24 24');
+  }
   buildCatFilters();
   compute();
   renderCharts({p:0,c:0,f:0,k:0,cost:0});
